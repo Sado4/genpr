@@ -2,6 +2,12 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.6] - 2025-04-01
+
+### Added
+
+- 🈁 Command name now switches between English and Japanese depending on the VS Code UI language
+
 ## [0.0.5] - 2025-04-01
 
 ### Added
