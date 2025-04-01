@@ -2,6 +2,13 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.5] - 2025-04-01
+
+### Added
+
+- 🇯🇵 Japanese language support based on VS Code's display language
+- Prompt messages and UI texts will now switch between English and Japanese
+
 ## [0.0.4] - 2025-04-01
 
 ### Added
