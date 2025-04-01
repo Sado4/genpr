@@ -2,6 +2,13 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.81] - 2025-04-01
+
+### Changed
+
+- 🔄 Updated `engines.vscode` back to `^1.84.0` for better alignment with the latest VS Code
+- 💡 Useful for users on stable VS Code, but may not be compatible with Cursor
+
 ## [0.0.8] - 2025-04-01
 
 ### Fixed
