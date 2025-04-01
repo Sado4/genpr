@@ -11,6 +11,7 @@
     "Other",
     "SCM Providers"
   ],
+  "icon": "images/icon.png",
   "keywords": [
     "git",
     "pull request",
