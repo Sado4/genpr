@@ -2,6 +2,12 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.7] - 2025-04-01
+
+### Fixed
+
+- ✅ Loosened `vscode` engine compatibility to allow installation on Cursor and older VS Code versions
+
 ## [0.0.6] - 2025-04-01
 
 ### Added
