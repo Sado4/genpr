@@ -19,7 +19,8 @@
     "prompt",
     "ai",
     "chatgpt",
-    "clipboard"
+    "clipboard",
+    "cursor"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
