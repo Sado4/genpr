@@ -8,7 +8,17 @@
     "vscode": "^1.98.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "SCM Providers"
+  ],
+  "keywords": [
+    "git",
+    "pull request",
+    "pr template",
+    "prompt",
+    "ai",
+    "chatgpt",
+    "clipboard"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
