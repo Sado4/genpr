@@ -1,5 +1,8 @@
 # 🚀 PR Prompt Generator
 
+[![Version](https://vsmarketplacebadge.apphb.com/version/Sado4.genpr.svg)](https://marketplace.visualstudio.com/items?itemName=Sado4.genpr)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs/Sado4.genpr.svg)](https://marketplace.visualstudio.com/items?itemName=Sado4.genpr)
+
 A VS Code extension that helps you generate prompts for AI tools (like ChatGPT) to write Pull Request descriptions based on your Git commit diffs.
 
 It reads your `.github/pull_request_template.md` and combines it with commit changes to create a structured, easy-to-paste prompt.
@@ -24,3 +27,5 @@ It reads your `.github/pull_request_template.md` and combines it with commit cha
 ## 💡 Requirements
 
 - A `.github/pull_request_template.md` file must exist in your project root.
+
+👉 [Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=Sado4.genpr)
