@@ -2,6 +2,12 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.8] - 2025-04-01
+
+### Fixed
+
+- ✅ Made the extension installable on [Cursor](https://www.cursor.com) by changing `engines.vscode` to `^1.84.0`
+
 ## [0.0.7] - 2025-04-01
 
 ### Fixed

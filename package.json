@@ -2,10 +2,10 @@
   "name": "genpr",
   "displayName": "PR Prompt Generator",
   "description": "Generate PR descriptions from git commit diffs and templates.",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "Sado4",
   "engines": {
-    "vscode": ">=1.70.0"
+    "vscode": "^1.84.0"
   },
   "categories": [
     "Other",
