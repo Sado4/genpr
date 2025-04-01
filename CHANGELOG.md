@@ -2,6 +2,12 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.4] - 2025-04-01
+
+### Added
+
+- 🖼️ Added extension icon for better visibility in the Marketplace and VS Code extension list
+
 ## [0.0.3] - 2025-04-01
 
 ### Changed
