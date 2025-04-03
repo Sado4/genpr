@@ -2,6 +2,14 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.83] - 2025-04-02
+
+### Changed
+
+- Improved AI prompt instructions to ensure commit summaries are placed under the correct section
+- Enforced plain commit hashes (not Markdown links) for better GitHub compatibility
+
+
 ## [0.0.82] - 2025-04-02
 
 ### Changed

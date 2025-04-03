@@ -77,8 +77,9 @@ export async function activate(context: vscode.ExtensionContext) {
 以下の各コミットの流れを理解し、以下のPRテンプレートに沿ってPR説明文を作成してください。
 
 - 出力は**マークダウン形式**にしてください
-- 各コミットを2〜3行で要約し、コミットハッシュを記載してください（GitHub上では自動的にリンクになります）
-- 要約は箇条書きで記載してください
+- 各コミットを2〜3行で要約し、短縮コミットハッシュ（例: \`abc1234\`）を文頭に記載してください
+- **リンク形式（[abc1234](...)）ではなく、テキストとしてのハッシュのみを記載してください**
+- 要約は「## 対応内容」セクションの下に、\`### コミット差分\` セクションとして出力してください
 - 最後にPRタイトルを1行で記載してください
 
 ## テンプレート
@@ -93,8 +94,9 @@ ${commitSection}
 Understand the flow of the following commits and generate a pull request description based on the template below.
 
 - Please output in **Markdown format**
-- Summarize each commit in 2–3 lines and include the commit hash (GitHub will automatically link it)
-- Use bullet points for the summary
+- Summarize each commit in 2–3 lines and start with the short commit hash (e.g. \`abc1234\`)
+- **Do NOT use link format (e.g. [abc1234](...)) — just plain hash text**
+- Place the summary under the "## Changes" section, using a subheading "### Commit Summary"
 - Add a one-line PR title at the end
 
 ## Template
