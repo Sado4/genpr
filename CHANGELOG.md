@@ -2,6 +2,13 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.82] - 2025-04-02
+
+### Changed
+
+- Simplified commit section to use only short hashes (GitHub auto-links them)
+- Removed repository URL parsing logic for simplicity and compatibility
+
 ## [0.0.81] - 2025-04-01
 
 ### Changed

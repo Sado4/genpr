@@ -10,7 +10,6 @@ export async function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
     "genpr.generatePrompt",
     async () => {
-      // Ask for the parent branch name
       const parentBranch = await vscode.window.showInputBox({
         prompt: isJa
           ? "親ブランチ名を入力してください（例: main）"
@@ -19,7 +18,6 @@ export async function activate(context: vscode.ExtensionContext) {
 
       if (!parentBranch) return;
 
-      // Get the root path of the workspace
       const workspaceFolders = vscode.workspace.workspaceFolders;
       if (!workspaceFolders) {
         vscode.window.showErrorMessage(
@@ -31,25 +29,38 @@ export async function activate(context: vscode.ExtensionContext) {
       }
 
       const rootPath = workspaceFolders[0].uri.fsPath;
-      const templatePath = path.join(
-        rootPath,
-        ".github/pull_request_template.md"
-      );
 
-      // Load the PR template
+      // テンプレート読み込み
       let template = isJa
         ? "テンプレートが見つかりませんでした。"
         : "No pull request template found.";
-      if (fs.existsSync(templatePath)) {
-        template = fs.readFileSync(templatePath, "utf-8");
+
+      const githubDir = path.join(rootPath, ".github");
+      if (fs.existsSync(githubDir)) {
+        const found = findTemplateFile(githubDir);
+        if (found) {
+          template = fs.readFileSync(found, "utf-8");
+        }
       }
 
-      // Get git diff logs from the parent branch to HEAD
-      let commits = "";
+      // コミットログ整形
+      let commitBlocks: string[] = [];
       try {
-        commits = execSync(`git log ${parentBranch}..HEAD -p --reverse`, {
-          cwd: rootPath,
-        }).toString();
+        const logOutput = execSync(
+          `git log ${parentBranch}..HEAD --pretty=format:"__COMMIT__%h|%s" -p --reverse`,
+          { cwd: rootPath }
+        ).toString();
+
+        const logs = logOutput.split("__COMMIT__").slice(1);
+
+        for (const block of logs) {
+          const [line, ...diffLines] = block.split("\n");
+          const [shortHash, subject] = line.split("|");
+
+          const diff = diffLines.join("\n").trim();
+          const entry = `### ${shortHash} ${subject}\n\n\`\`\`diff\n${diff}\n\`\`\``;
+          commitBlocks.push(entry);
+        }
       } catch (err) {
         vscode.window.showErrorMessage(
           isJa
@@ -59,37 +70,40 @@ export async function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      // Generate prompt text
+      const commitSection = commitBlocks.join("\n\n");
+
       const prompt = isJa
         ? `
 以下の各コミットの流れを理解し、以下のPRテンプレートに沿ってPR説明文を作成してください。
 
-テンプレート：
----
+- 出力は**マークダウン形式**にしてください
+- 各コミットを2〜3行で要約し、コミットハッシュを記載してください（GitHub上では自動的にリンクになります）
+- 要約は箇条書きで記載してください
+- 最後にPRタイトルを1行で記載してください
+
+## テンプレート
+
 ${template}
----
-コミット差分：
----
-${commits}
----
-出力形式：
-- 箇条書きの要約
-- 最後にPRタイトルを1行で出力
+
+## コミット差分
+
+${commitSection}
 `.trim()
         : `
 Understand the flow of the following commits and generate a pull request description based on the template below.
 
-Template:
----
+- Please output in **Markdown format**
+- Summarize each commit in 2–3 lines and include the commit hash (GitHub will automatically link it)
+- Use bullet points for the summary
+- Add a one-line PR title at the end
+
+## Template
+
 ${template}
----
-Commit diff:
----
-${commits}
----
-Output format:
-- A bullet-point summary
-- A one-line PR title at the end
+
+## Commit diff
+
+${commitSection}
 `.trim();
 
       await vscode.env.clipboard.writeText(prompt);
@@ -102,6 +116,28 @@ Output format:
   );
 
   context.subscriptions.push(disposable);
+}
+
+function findTemplateFile(dir: string): string | null {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      const found = findTemplateFile(fullPath);
+      if (found) return found;
+    }
+
+    if (
+      entry.isFile() &&
+      entry.name.toLowerCase() === "pull_request_template.md"
+    ) {
+      return fullPath;
+    }
+  }
+
+  return null;
 }
 
 export function deactivate() {}
