@@ -2,6 +2,14 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.84] - 2025-04-02
+
+### Improved
+
+- ✍️ Enhanced AI prompt instructions for more accurate and factual PR summaries
+- 📌 Enforced rule to exclude subjective or inferred expressions in AI output
+- 🔗 Clarified hash format should not be Markdown links
+
 ## [0.0.83] - 2025-04-02
 
 ### Changed

@@ -74,12 +74,16 @@ export async function activate(context: vscode.ExtensionContext) {
 
       const prompt = isJa
         ? `
-以下の各コミットの流れを理解し、以下のPRテンプレートに沿ってPR説明文を作成してください。
+以下の各コミットの流れと注意書きを理解し、以下のPRテンプレートに沿ってPR説明文を作成してください。
 
 - 出力は**マークダウン形式**にしてください
+- コード差分から直接確認できる内容のみに基づいて記述してください
+- 推測、主観的な判断、意図や目的の説明、抽象的な評価表現などは禁止です
+- 変更された事実のみを、客観的かつ簡潔に記述してください
+- 出力において例示・装飾的な言い回し・背景の推定を含めないでください
 - 各コミットを2〜3行で要約し、短縮コミットハッシュ（例: \`abc1234\`）を文頭に記載してください
 - **リンク形式（[abc1234](...)）ではなく、テキストとしてのハッシュのみを記載してください**
-- 要約は「## 対応内容」セクションの下に、\`### コミット差分\` セクションとして出力してください
+- 要約は「## 対応内容」など、PRに対して対応した内容が記されたものを記載するようなセクションがあればその下に、\`### コミット差分\` セクションとして出力してください
 - 最後にPRタイトルを1行で記載してください
 
 ## テンプレート
@@ -91,12 +95,16 @@ ${template}
 ${commitSection}
 `.trim()
         : `
-Understand the flow of the following commits and generate a pull request description based on the template below.
+Understand the following commits and the guidelines below, then generate a Pull Request description based on the provided template.
 
-- Please output in **Markdown format**
-- Summarize each commit in 2–3 lines and start with the short commit hash (e.g. \`abc1234\`)
-- **Do NOT use link format (e.g. [abc1234](...)) — just plain hash text**
-- Place the summary under the "## Changes" section, using a subheading "### Commit Summary"
+- Output should be in **Markdown format**
+- Only describe facts that can be confirmed from the code diff
+- **Do not infer intent, purpose, or subjective evaluations**
+- Avoid abstract phrases, background assumptions, or examples
+- Write concise and objective summaries of what was actually changed
+- Summarize each commit in 2–3 lines, starting with the short commit hash (e.g. \`abc1234\`)
+- **Do NOT use links like [abc1234](...) — use plain hash text only**
+- Place the summary under a section like "## Changes" using a subheading \`### Commit Summary\`
 - Add a one-line PR title at the end
 
 ## Template
