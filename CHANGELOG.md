@@ -2,6 +2,13 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.85] - 2025-04-02
+
+### Fixed
+
+- 🧠 Clarified where to place commit summaries when change sections are optional
+- ✍️ Updated AI prompt instructions to preserve full PR template structure and avoid ambiguity
+
 ## [0.0.84] - 2025-04-02
 
 ### Improved
