@@ -74,7 +74,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
       const prompt = isJa
         ? `
-以下のPRテンプレートに沿って、Pull Request の説明文をマークダウン形式でコピーできるようにして作成してください。
+以下のPRテンプレートに沿って、Pull Request の説明文をマークダウン形式のコードスニペットで出力してコピーできるように作成してください。
 
 - 出力には**テンプレートのすべてのセクションを含めてください**
 - 各コミットの内容は2〜3行で要約し、短縮コミットハッシュ（例: \`abc1234\`）を文頭に記載してください
@@ -92,7 +92,7 @@ ${template}
 ${commitSection}
 `.trim()
         : `
-Please generate a Pull Request description based on the template ready to copy in **Markdown** format.
+Please output a Pull Request description in Markdown format that can be copied in **Markdown** format.
 
 - Include **all sections from the template** in your output
 - Summarize each commit in 2–3 lines, starting with the short commit hash (e.g. \`abc1234\`)

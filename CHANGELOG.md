@@ -2,6 +2,13 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.87] - 2025-04-02
+
+### Improved
+
+- 📝 Clarified in the prompt that the generated PR description should be easy to copy in Markdown format
+- 🧠 Refined language to better guide AI placement of commit summaries under the appropriate template section
+
 ## [0.0.86] - 2025-04-02
 
 ### Improved
