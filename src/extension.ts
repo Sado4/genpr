@@ -113,8 +113,8 @@ ${commitSection}
       await vscode.env.clipboard.writeText(prompt);
       vscode.window.showInformationMessage(
         isJa
-          ? "📋 プロンプトをクリップボードにコピーしました！"
-          : "📋 Prompt has been copied to your clipboard!"
+          ? "📋 PRプロンプトをクリップボードにコピーしました！"
+          : "📋 PR prompt has been copied to your clipboard!"
       );
     }
   );

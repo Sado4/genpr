@@ -2,6 +2,12 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.88] - 2025-04-23
+
+### Improved
+
+- 📝 Dialog language displayed when copied to the clipboard has been adjusted.
+
 ## [0.0.87] - 2025-04-02
 
 ### Improved
