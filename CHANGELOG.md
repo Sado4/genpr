@@ -2,6 +2,13 @@
 
 All notable changes to the "genpr" extension will be documented in this file.
 
+## [0.0.89] - 2025-05-16
+
+### Changed
+
+- Improve error handling for `git log` failures
+- Show detailed errors in VS Code output panel (`genpr` channel)
+
 ## [0.0.88] - 2025-04-23
 
 ### Improved
