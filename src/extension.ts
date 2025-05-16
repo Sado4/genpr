@@ -46,11 +46,11 @@ export async function activate(context: vscode.ExtensionContext) {
       // コミットログ整形
       let commitBlocks: string[] = [];
       try {
+        // マージコミットは除外
         const logOutput = execSync(
-          `git log ${parentBranch}..HEAD --pretty=format:"__COMMIT__%h|%s" -p --reverse`,
+          `git log ${parentBranch}..HEAD --no-merges --pretty=format:"__COMMIT__%h|%s" -p --reverse`,
           { cwd: rootPath }
         ).toString();
-
         const logs = logOutput.split("__COMMIT__").slice(1);
 
         for (const block of logs) {

@@ -16,6 +16,7 @@ It reads your `.github/pull_request_template.md` and combines it with commit cha
 ## ✨ Features
 
 - Automatically generates a PR prompt based on commit diffs
+- **Merge commits are excluded** — only actual change commits are considered
 - Formats the prompt using your existing PR template
 - Copies the prompt to your clipboard — just paste it into ChatGPT or your favorite AI tool!
 - 🗣️ **Language auto-switching** between English and Japanese
